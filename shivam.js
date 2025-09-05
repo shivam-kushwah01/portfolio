@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const menuBtn = document.getElementById('menuBtn');
         const navLinks = document.getElementById('navLinks');
         
@@ -33,12 +35,17 @@ const menuBtn = document.getElementById('menuBtn');
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
             
-            // In a real application, you would send this data to a server
-            // For this example, we'll just show an alert
-            alert(`Thank you for your message, ${name}! We'll get back to you at ${email} soon.`);
-            
-            // Reset form
-            this.reset();
+           fetch(`${process.env.BACKEND_URL}/send-email`, {
+           method: "POST",
+           headers: { "Content-Type": "application/json" },
+           body: JSON.stringify({ name, email, message })
+           })
+           .then(res => res.json())
+           .then(data => {
+             alert(data.message);
+             this.reset();
+            })
+            .catch(err => console.error(err));
         });
 
          // GSAP Animations
