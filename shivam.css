@@ -106,7 +106,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding-top: 80px;
+            padding-top: 180px;
         }
         
         .intro-content {
@@ -384,7 +384,7 @@
             }
             
             .profile-img {
-                margin-top: 1rem;
+                margin-top: 2rem;
                 width: 280px;
                 height: 280px;
             }
